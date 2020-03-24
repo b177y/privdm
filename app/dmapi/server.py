@@ -28,9 +28,9 @@ def check_all_threads():
         updates,updated = user_check(user)
         db.update_one({'_id': user['_id']}, {"$set": updates})
         if updated:
-            print(f"\aLatest Sent for {user['username']} at {user['latest_sent']}.", end="", flush=True)
+            print(f"Latest Sent for {user['username']} at {user['latest_sent']}.", end="", flush=True)
         else:
-            print(f"\aNo updates for {user['username']}.", end="", flush=True)
+            print(f"No updates for {user['username']}.", end="", flush=True)
 
 if __name__ == "__main__":
     errors = 0
