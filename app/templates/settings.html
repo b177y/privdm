@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+
+{% block head %}
+{{ super() }}
+<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+<meta http-equiv="Pragma" content="no-cache" />
+<meta http-equiv="Expires" content="0" />
+{% endblock %}
+
+{% block body %}
+<div class="settingsbox">
+    <form method="post">
+        {{ cform.hidden_tag() }}
+        <h1>Settings</h1>
+        <div class="felement">{{ cform.active.label }}{{ cform.active() }}</div>
+        <div class="felement">{{ cform.botname.label }}{{ cform.botname() }}</div>
+        <div class="felement">{{ cform.submit() }}</div>
+    </form>
+
+    <h1>Nicknames</h1>
+    <form method="post">
+        {{ anform.hidden_tag() }}
+        <div class="felement">{{ anform.anickname.label }}{{ anform.anickname() }}{{ anform.ausername.label }}{{ anform.ausername() }}{{ anform.add() }}</div>
+    </form>
+    {% for nf in nn_forms %}
+        <form method="post">
+            {{ nf.hidden_tag() }}
+            <div class="felement">{{ nf.nickname.label }}{{ nf.nickname() }}{{nf.username.label }}{{ nf.username() }}{{ nf.update() }}{{ nf.delete() }}</div>
+        </form>
+    {% endfor %}
+
+</div>
+{% endblock %}
