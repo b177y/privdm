@@ -10,15 +10,19 @@ def get_item_params(media_item, recipients):
     json.dump(media_item, f)
     f.close()
     if media_item['item_type']=='felix_share':
+        print("Felix share")
         i['url'] = media_item['felix_share']['video']['video_versions'][0]['url']
         i['media_type'] = 'video'
     elif media_item['media_share']['media_type'] == 1:
+        print("Media type 1")
         i['url'] = media_item['media_share']['image_versions2']['candidates'][0]['url']
-        i['media_type'] = 'video'
+        i['media_type'] = 'photo'
     elif media_item['media_share']['media_type'] == 2:
+        print("Media type 2")
         i['url'] = media_item['media_share']['video_versions'][0]['url']
         i['media_type'] = 'photo'
     elif media_item['media_share']['media_type'] == 8:
+        print("Media type 8")
         i['url'] = media_item['media_share']['carousel_media'][0]['image_versions2']['candidates'][0]['url']
         i['media_type'] = 'photo'
     i['media_id'] = media_item['media_share']['id']
